@@ -9,7 +9,7 @@ The [HuggingFace Hub](https://github.com/huggingface/huggingface_hub) is impleme
 ## What I Learnt
 
 * Configuring reqwest for GET, POST, PUT, DELETE requests
-* Certifying HTTPS using reqwest from within a Docker image -- I spent days debugging and exhausting certification solutions and it all came down to enabling the rustls-tls feature in reqwest and installing debian ca-certificates 🤯
+* Certifying HTTPS using reqwest from within a Docker image -- I spent days debugging and exhausting certification solutions and it all came down to enabling the rustls-tls feature in reqwest and either installing debian ca-certificates or mounting them to Docker at runtime 🤯
 
 
 ## Setup
