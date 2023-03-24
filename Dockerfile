@@ -1,21 +1,14 @@
 FROM rust:latest as builder
 ARG token
-ENV HF_ACCESS_TOKEN $token
-ENV APP hf-micro
-WORKDIR /usr/src/$APP
+ENV hf-access-token $token
+WORKDIR /usr/src/app
 COPY . .
-RUN cargo install --path .
+RUN cargo build --release
 
-FROM debian:buster-slim
-RUN apt-get update && \
-    # install ca-certificates
-    apt-get install -y ca-certificates && \
-    # update ca-certificates
-    update-ca-certificates && \
-    # clean up
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
-COPY --from=builder /usr/local/cargo/bin/$APP /usr/local/bin/$APP
+# Use distroless debian11 whih includes ca-certificates
+FROM gcr.io/distroless/cc-debian11
+COPY --from=builder /usr/src/app/target/release/hf-micro /usr/local/bin/hf-micro
+
 #export this actix web service to port 8080 and 0.0.0.0
 EXPOSE 8080
 CMD ["hf-micro"]

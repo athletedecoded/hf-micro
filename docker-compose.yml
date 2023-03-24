@@ -4,8 +4,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: hf-micro
+    image: hf-micro-distroless
     environment:
-      - HF_ACCESS_TOKEN
+      - hf-access-token
     ports:
     - 8080:8080

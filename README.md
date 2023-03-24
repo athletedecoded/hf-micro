@@ -41,6 +41,12 @@ $ make run
 $ make build
 ```
 
+**Gotchas** if you encounter a build failure on "ERROR [internal] load metadata ..." then run
+```
+$ rm  ~/.docker/config.json 
+$ make build
+```
+
 3. Run Docker image
 
 ```
