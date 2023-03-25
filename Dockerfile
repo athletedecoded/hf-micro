@@ -1,6 +1,6 @@
 FROM rust:latest as builder
 ARG token
-ENV hf-access-token $token
+ENV HF_ACCESS_TOKEN $token
 WORKDIR /usr/src/app
 COPY . .
 RUN cargo build --release

@@ -1,2 +1,2 @@
 # Your HF access token
-hf-access-token = <YOUR_ACCESS_TOKEN>
+HF_ACCESS_TOKEN = <YOUR_ACCESS_TOKEN>

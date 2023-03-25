@@ -1,4 +1,4 @@
-# Set your hf-access-token here
+# Set your HF_ACCESS_TOKEN here
 USR_TOKEN = <YOUR_ACCESS_TOKEN>
 
 rust-version:
@@ -17,10 +17,10 @@ build:
 	docker-compose build
 
 rundocker:
-	docker run -e hf-access-token=${USR_TOKEN} -p 8080:8080 hf-micro
+	docker run -e HF_ACCESS_TOKEN=${USR_TOKEN} -p 8080:8080 hf-micro
 
 mntcerts:
-	docker run -e hf-access-token=${USR_TOKEN} -p 8080:8080 -v /certs/cert.pem:/usr/local/share/ca-certificates/ hf-micro
+	docker run -e HF_ACCESS_TOKEN=${USR_TOKEN} -p 8080:8080 -v /certs/cert.pem:/usr/local/share/ca-certificates/ hf-micro
 
 format:
 	cargo fmt --quiet

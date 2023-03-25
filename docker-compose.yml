@@ -6,6 +6,6 @@ services:
       dockerfile: Dockerfile
     image: hf-micro-distroless
     environment:
-      - hf-access-token
+      - HF_ACCESS_TOKEN
     ports:
     - 8080:8080

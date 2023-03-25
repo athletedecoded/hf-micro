@@ -40,7 +40,7 @@ async fn account() -> impl Responder {
     // Create a new certified reqwest client
     let client = reqwest::Client::new();
     // Create authorization string
-    let auth_token = dotenv::var("hf-access-token").expect("AUTH_TOKEN must be set");
+    let auth_token = dotenv::var("HF_ACCESS_TOKEN").expect("AUTH_TOKEN must be set");
     let auth_str = format!("Bearer {auth_token}");
     // GET request with authorization header
     let res = client
@@ -73,7 +73,7 @@ pub async fn new_repo(repo_config: web::Json<NewRepo>) -> impl Responder {
     // Create a new certified reqwest client
     let client = reqwest::Client::new();
     // Create authorization string
-    let auth_token = dotenv::var("hf-access-token").expect("AUTH_TOKEN must be set");
+    let auth_token = dotenv::var("HF_ACCESS_TOKEN").expect("AUTH_TOKEN must be set");
     let auth_str = format!("Bearer {auth_token}");
     // POST request with authorization header and json body
     let res = client
@@ -110,7 +110,7 @@ pub async fn delete_repo(repo_config: web::Json<DeleteRepo>) -> impl Responder {
     // Create a new reqwest client
     let client = reqwest::Client::new();
     // Create authorization string
-    let auth_token = dotenv::var("hf-access-token").expect("AUTH_TOKEN must be set");
+    let auth_token = dotenv::var("HF_ACCESS_TOKEN").expect("AUTH_TOKEN must be set");
     let auth_str = format!("Bearer {auth_token}");
     // POST request with authorization header and json body
     let res = client
@@ -139,7 +139,7 @@ pub async fn update_repo(repo_config: web::Json<UpdateRepo>) -> impl Responder {
     // Create a new reqwest client
     let client = reqwest::Client::new();
     // Create authorization string
-    let auth_token = dotenv::var("hf-access-token").expect("AUTH_TOKEN must be set");
+    let auth_token = dotenv::var("HF_ACCESS_TOKEN").expect("AUTH_TOKEN must be set");
     let auth_str = format!("Bearer {auth_token}");
     // PUT request with authorization header and json body
     let url = format!(
