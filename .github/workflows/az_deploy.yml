@@ -1,7 +1,8 @@
 name: Trigger auto deployment for demo-container
 
 env:
-  AZURE_CONTAINER_APP_NAME: hf-micro
+  AZURE_CONTAINER_APP_NAME: hf-micro-distro
+  AZURE_CONTAINER_NAME: hf-micro-container
   AZURE_GROUP_NAME: rust-azure-athletedecoded
 
 on:
@@ -62,4 +63,5 @@ jobs:
             az containerapp registry set -n ${{ env.AZURE_CONTAINER_APP_NAME }} -g ${{ env.AZURE_GROUP_NAME }} --server ghcr.io --username  ${{ github.actor }} --password ${{ secrets.PAT }}
             az containerapp update -n ${{ env.AZURE_CONTAINER_APP_NAME }} -g ${{ env.AZURE_GROUP_NAME }} --image ghcr.io/${{ env.REPO }}:${{ github.sha }}
             az containerapp update -n ${{ env.AZURE_CONTAINER_APP_NAME }} -g ${{ env.AZURE_GROUP_NAME }} --set-env-vars "HF_ACCESS_TOKEN=${{ secrets.HFAT }}"
+            az containerapp update -n ${{ env.AZURE_CONTAINER_APP_NAME }} -g ${{ env.AZURE_GROUP_NAME }} --container-name ${{ env.AZURE_CONTAINER_NAME }}"
   
